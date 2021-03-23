@@ -16,7 +16,6 @@
 </head>
 
 
-
 <body>
 <!-- header -->
 <nav th:insert="fragments/navbar :: nav_fragment"></nav>
@@ -46,6 +45,22 @@
                 <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal"> Send
                 </button>
             </form>
+
+            <div th:if="${emailList.isEmpty()}">
+                Data not found
+            </div>
+            <div th:unless="${emailList.isEmpty()}">
+            
+            <table>
+                <tbody>
+                <tr th:each="email : ${emailList}">
+                    <td>
+                        <span th:text="${email}"></span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
         </div>
     </div>
 </div>
