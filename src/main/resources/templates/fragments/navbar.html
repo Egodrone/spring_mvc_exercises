@@ -17,7 +17,7 @@
     <nav th:fragment="nav_fragment" class="navbar navbar-expand-sm bg-dark navbar-dark">
         <!-- Brand/logo -->
         <a class="navbar-brand" href="#">
-            <img th:src="@{/img/b.jpg}" alt="logo" style="width:40px;">
+            <img th:src="@{/img/b.jpg}" alt="logo" style="width: 40px;">
         </a>
 
         <!-- Links -->
@@ -30,6 +30,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/about}"> About </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/temp}"> Temperature </a>
             </li>
         </ul>
     </nav>

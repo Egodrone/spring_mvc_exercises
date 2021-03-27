@@ -15,13 +15,17 @@ import java.util.List;
 @Controller
 public class Home {
     private List<String> emailList;
+    //create variable or list for the normal
+    //create same for hypothermia
+
 
     @PostConstruct
     public void init() {
-        if(emailList == null) {
+        if (emailList == null) {
             emailList = new ArrayList<>();
         }
     }
+
 
     @GetMapping("/index")
     public String index() {
@@ -43,6 +47,7 @@ public class Home {
         return "redirect:/contact/";
     }
 
+
     @GetMapping("/about")
     public String about() {
         return "about";
@@ -55,6 +60,12 @@ public class Home {
         System.out.println("emailList = " + emailList);
         model.addAttribute("emailList", emailList);
         return "contact";
+    }
+
+
+    @GetMapping("/temp")
+    public String temp() {
+        return "temp";
     }
 
 
