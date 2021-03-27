@@ -40,16 +40,16 @@
                 Data not found
             </div>
             <div th:unless="${emailList.isEmpty()}">
-            
-            <table>
-                <tbody>
-                <tr th:each="email : ${emailList}">
-                    <td>
-                        <span th:text="${email}"></span>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+
+                <table>
+                    <tbody>
+                    <tr th:each="email : ${emailList}">
+                        <td>
+                            <span th:text="${email}"></span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

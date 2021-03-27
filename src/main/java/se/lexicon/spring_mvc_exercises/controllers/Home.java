@@ -15,8 +15,7 @@ import java.util.List;
 @Controller
 public class Home {
     private List<String> emailList;
-    //create variable or list for the normal
-    //create same for hypothermia
+    private String tempStatus = "";
 
 
     @PostConstruct
@@ -31,12 +30,6 @@ public class Home {
     public String index() {
         return "index";
     }
-
-    /*
-    @GetMapping("/contact")
-    public String contact() {
-        return "contact";
-    }*/
 
 
     @PostMapping(path = "/contact")
@@ -68,5 +61,23 @@ public class Home {
         return "temp";
     }
 
+
+    @PostMapping(path = "/temp")
+    public String tempStatus(@RequestParam int temp) {
+        System.out.println(temp);
+
+        if (temp < 36) {
+            System.out.println(" Hypothermia ");
+            tempStatus = " Hypothermia ";
+        } else if (temp > 35 && temp < 38) {
+            System.out.println(" Normal temperature ");
+            tempStatus = " Normal ";
+        } else {
+            System.out.println(" Fever ");
+            tempStatus = " Fever ";
+        }
+        //return "redirect:/temp/";
+        return "temp";
+    }
 
 }
