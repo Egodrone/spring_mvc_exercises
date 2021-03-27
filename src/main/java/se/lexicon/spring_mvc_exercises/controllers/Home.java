@@ -15,6 +15,7 @@ import java.util.List;
 @Controller
 public class Home {
     private List<String> emailList;
+    private List<String> tempList;
     private String tempStatus = "";
 
 
@@ -22,6 +23,7 @@ public class Home {
     public void init() {
         if (emailList == null) {
             emailList = new ArrayList<>();
+            tempList = new ArrayList<>();
         }
     }
 
@@ -49,7 +51,6 @@ public class Home {
 
     @GetMapping("/contact")
     public String contactList(Model model) {
-        String testName = "test";
         System.out.println("emailList = " + emailList);
         model.addAttribute("emailList", emailList);
         return "contact";
@@ -57,7 +58,9 @@ public class Home {
 
 
     @GetMapping("/temp")
-    public String temp() {
+    public String temp(Model model) {
+        model.addAttribute("tempList", tempList);
+        System.out.println("tempList = " + tempList);
         return "temp";
     }
 
@@ -69,15 +72,18 @@ public class Home {
         if (temp < 36) {
             System.out.println(" Hypothermia ");
             tempStatus = " Hypothermia ";
+            tempList.add("Hypothermia");
         } else if (temp > 35 && temp < 38) {
             System.out.println(" Normal temperature ");
             tempStatus = " Normal ";
+            tempList.add("Normal");
         } else {
             System.out.println(" Fever ");
             tempStatus = " Fever ";
+            tempList.add("Fever");
         }
-        //return "redirect:/temp/";
-        return "temp";
+
+        return "redirect:/temp/";
     }
 
 }
